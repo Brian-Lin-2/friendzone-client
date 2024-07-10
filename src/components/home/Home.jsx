@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { isLoggedIn } from "../../functions/utils";
 
 export default function Home() {
+  // We skip home screen if user is already logged in.
+  isLoggedIn();
+
   return (
     <div className="flex justify-evenly items-center min-h-lvh bg-light-pink">
       <div>
