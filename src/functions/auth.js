@@ -20,7 +20,7 @@ async function createUser(user) {
 
 function populateErrors(errors, err) {
   errors.forEach((e) => {
-    err[e.path] = "border-2 border-red-500";
+    err[e.path] = "border-2 border-red-400";
     err[`${e.path}_msg`] = e.msg;
   });
 }
@@ -37,7 +37,9 @@ async function login(user) {
   const data = await res.json();
 
   if (res.ok) {
-    // Store the token for authentication.
+    // We can add more later.
+    sessionStorage.setItem("user", data.user.first_name);
+    // Store a token for authentication.
     sessionStorage.setItem("token", data.token);
 
     // Redirect to message page and change headers accordingly.
@@ -94,4 +96,9 @@ export async function attemptLogin(e, setErrors) {
     populateErrors(err.errors, errors);
     setErrors(errors);
   }
+}
+
+export function logout() {
+  sessionStorage.clear();
+  window.location.href = "http://localhost:5173";
 }

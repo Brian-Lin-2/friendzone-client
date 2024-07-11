@@ -27,7 +27,7 @@ export default function Login() {
             placeholder="username"
           />
           {errors?.username_msg && (
-            <span className="text-sm -mt-3 text-red-500">
+            <span className="text-sm -mt-3 text-red-400">
               {errors.username_msg}
             </span>
           )}
@@ -38,7 +38,7 @@ export default function Login() {
             placeholder="password"
           />
           {errors?.password_msg && (
-            <span className="text-sm -mt-3 text-red-500">
+            <span className="text-sm -mt-3 text-red-400">
               {errors.password_msg}
             </span>
           )}

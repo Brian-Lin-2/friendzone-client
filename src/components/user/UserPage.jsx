@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export default function UserPage() {
   // Make sure user is logged in.
-  // authenticate();
+  authenticate();
 
   return (
     <div className="flex">

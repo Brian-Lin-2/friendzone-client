@@ -1,17 +1,65 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import User from "./User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faComments,
+  faUser,
+  faSquarePlus,
+} from "@fortawesome/free-regular-svg-icons";
+
+import { faUsersViewfinder } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
-  return (
-    <div className="pl-8 py-8 border flex flex-col min-h-lvh w-52 border-red-500 justify-between">
-      <div className="">
-        <img className="w-12" src="/images/favicon.png" />
+  const linkStyling =
+    "hover:text-light-pink-2 hover:border-r-2 hover:border-light-pink-2 flex items-center gap-4 py-4";
+  const activeStyling = "text-light-pink-2 border-r-2 border-light-pink-2";
 
-        <div className="flex flex-col justify-end items-end">
-          <Link to="">messages</Link>
-          <Link to="profile">profile</Link>
-          <Link to="add-friend">add friend</Link>
-          <Link to="create-group">create group</Link>
+  return (
+    <div className="pl-8 py-8 border flex flex-col min-h-lvh w-64 justify-between bg-light-pink">
+      <div>
+        <img className="w-12 mb-16" src="/images/favicon.png" />
+
+        <div className="flex flex-col justify-end text-lg">
+          <NavLink
+            className={({ isActive }) =>
+              `${linkStyling} ${isActive ? activeStyling : ""}`
+            }
+            to="."
+            end
+          >
+            <FontAwesomeIcon icon={faComments} />
+            messages
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `${linkStyling} ${isActive ? activeStyling : ""}`
+            }
+            to="profile"
+            end
+          >
+            <FontAwesomeIcon icon={faUser} />
+            profile
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `${linkStyling} ${isActive ? activeStyling : ""}`
+            }
+            to="add-friend"
+            end
+          >
+            <FontAwesomeIcon icon={faSquarePlus} />
+            add friend
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `${linkStyling} ${isActive ? activeStyling : ""}`
+            }
+            to="create-group"
+            end
+          >
+            <FontAwesomeIcon icon={faUsersViewfinder} />
+            create group
+          </NavLink>
         </div>
       </div>
 
