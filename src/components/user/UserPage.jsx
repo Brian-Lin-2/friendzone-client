@@ -7,7 +7,7 @@ export default function UserPage() {
   authenticate();
 
   return (
-    <div className="flex">
+    <div className="flex min-h-lvh">
       <Sidebar />
       <Outlet />
     </div>

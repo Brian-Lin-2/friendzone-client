@@ -10,12 +10,11 @@ import {
 import { faUsersViewfinder } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
-  const linkStyling =
-    "hover:text-light-pink-2 hover:border-r-2 hover:border-light-pink-2 flex items-center gap-4 py-4";
-  const activeStyling = "text-light-pink-2 border-r-2 border-light-pink-2";
+  const linkStyling = "hover:text-active-pink flex items-center gap-4 py-4";
+  const activeStyling = "text-active-pink border-r-2 border-active-pink ";
 
   return (
-    <div className="pl-8 py-8 border flex flex-col min-h-lvh w-64 justify-between bg-light-pink">
+    <div className="pl-8 py-8 flex flex-col w-64 justify-between bg-pink">
       <div>
         <img className="w-12 mb-16" src="/images/favicon.png" />
 
