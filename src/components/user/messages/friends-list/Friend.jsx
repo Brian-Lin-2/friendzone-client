@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-export default function Friend({ selected, name }) {
+export default function Friend({ id, selected, name, setSelectedFriend }) {
   return (
     <button
       className={`flex justify-between items-center p-4 rounded-lg ${
         selected ? "bg-pink" : ""
       }`}
+      onClick={() => setSelectedFriend(id)}
     >
       <div className="flex items-center gap-3">
         <img

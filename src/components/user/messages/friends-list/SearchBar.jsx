@@ -1,7 +1,17 @@
+/* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { user } from "../../../../functions/utils";
 
-export default function SearchBar() {
+export default function SearchBar({ friends, setFriends }) {
+  function filterFriends(e) {
+    const name = e.target.value;
+    const filtered_friends = user.friends.filter((friend) =>
+      friend.full_name.startsWith(name)
+    );
+    setFriends(filtered_friends);
+  }
+
   // Dummy search for now.
   return (
     <form className="border border-font-gray rounded flex items-center gap-2 px-2 py-1">
@@ -11,6 +21,7 @@ export default function SearchBar() {
         type="text"
         name="friend_search"
         placeholder="search"
+        onChange={(e) => filterFriends(e)}
       />
     </form>
   );
