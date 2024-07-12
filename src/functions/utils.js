@@ -11,3 +11,6 @@ export function authenticate() {
     window.location.href = "http://localhost:5173/login";
   }
 }
+
+const user = JSON.parse(sessionStorage.getItem("user"));
+export { user };

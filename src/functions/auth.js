@@ -38,7 +38,7 @@ async function login(user) {
 
   if (res.ok) {
     // We can add more later.
-    sessionStorage.setItem("user", data.user.first_name);
+    sessionStorage.setItem("user", JSON.stringify(data.user));
     // Store a token for authentication.
     sessionStorage.setItem("token", data.token);
 
