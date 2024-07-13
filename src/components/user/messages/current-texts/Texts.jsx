@@ -4,7 +4,6 @@ import { user, token } from "../../../../functions/utils";
 
 export default function Texts({ friend_id }) {
   const [texts, setTexts] = useState([]);
-  console.log(texts.forEach((e) => console.log(e)));
 
   useEffect(() => {
     async function getMessages() {

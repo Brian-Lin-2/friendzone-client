@@ -11,7 +11,7 @@ export default function CurrentTexts({ selectedFriend }) {
 
       <div className="flex-grow bg-transparent-pink flex flex-col justify-between">
         <Texts friend_id={selectedFriend._id} />
-        <TextBar />
+        <TextBar friend_id={selectedFriend._id} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { user } from "../../../../functions/utils";
 
 export default function SearchBar({ setFriends }) {
   function filterFriends(e) {
+    e.preventDefault();
     const name = e.target.value;
     const filtered_friends = user.friends.filter((friend) =>
       friend.full_name.startsWith(name)
