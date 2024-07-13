@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { user } from "../../../../functions/utils";
 
-export default function SearchBar({ friends, setFriends }) {
+export default function SearchBar({ setFriends }) {
   function filterFriends(e) {
     const name = e.target.value;
     const filtered_friends = user.friends.filter((friend) =>

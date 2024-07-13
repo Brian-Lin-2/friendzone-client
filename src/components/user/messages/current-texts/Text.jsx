@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+// user parameter determines if the text was from the user or the friend.
 export default function Text({ user, message }) {
   return (
     <span
