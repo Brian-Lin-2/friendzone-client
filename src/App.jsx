@@ -5,8 +5,8 @@ import Login from "./components/home/Login";
 import UserPage from "./components/user/UserPage";
 import Messages from "./components/user/messages/Messages";
 import ProfileInfo from "./components/user/profile/ProfileInfo";
-import AddFriend from "./components/user/add-friend/AddFriend";
-import CreateGroup from "./components/user/create-group/CreateGroup";
+import AddFriend from "./components/user/friend/AddFriend";
+import FriendRequests from "./components/user/friend/FriendRequests";
 
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
               <Route index element={<Messages />} />
               <Route path="profile" element={<ProfileInfo />} />
               <Route path="add-friend" element={<AddFriend />} />
-              <Route path="create-group" element={<CreateGroup />} />
+              <Route path="friend-requests" element={<FriendRequests />} />
             </Route>
           </Route>
         </Routes>

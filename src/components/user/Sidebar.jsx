@@ -5,9 +5,8 @@ import {
   faComments,
   faUser,
   faSquarePlus,
+  faBell,
 } from "@fortawesome/free-regular-svg-icons";
-
-import { faUsersViewfinder } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
   const linkStyling = "hover:text-active-pink flex items-center gap-4 py-4";
@@ -53,11 +52,11 @@ export default function Sidebar() {
             className={({ isActive }) =>
               `${linkStyling} ${isActive ? activeStyling : ""}`
             }
-            to="create-group"
+            to="friend-requests"
             end
           >
-            <FontAwesomeIcon icon={faUsersViewfinder} />
-            create group
+            <FontAwesomeIcon icon={faBell} />
+            friend requests
           </NavLink>
         </div>
       </div>
