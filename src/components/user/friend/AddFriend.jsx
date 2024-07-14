@@ -31,7 +31,7 @@ export default function AddFriend() {
 
   return (
     <div className="flex flex-col flex-grow bg-light-pink items-center gap-8">
-      <img className="w-[600px] mt-12" src="/images/friends.png" />
+      <img className="w-[500px] mt-12" src="/images/friends.png" />
       <div>
         <form className="flex items-center" onSubmit={(e) => sendRequest(e)}>
           <input
