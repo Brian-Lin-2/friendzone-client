@@ -13,8 +13,9 @@ export default function FriendRequests() {
           {requests.map((request) => {
             return (
               <FriendRequest
-                key={request}
+                key={request._id}
                 friend={request}
+                requests={requests}
                 setRequests={setRequests}
               />
             );

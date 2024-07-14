@@ -6,6 +6,11 @@ export default function Texts({ friend_id }) {
   const [texts, setTexts] = useState([]);
 
   useEffect(() => {
+    // Edge case. No friends.
+    if (!friend_id) {
+      return;
+    }
+
     async function getMessages() {
       const req = await fetch(
         `http://127.0.0.1:3000/message/all/${friend_id}`,

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { user } from "../../../functions/utils";
 
 export default function Messages() {
-  const [selectedFriend, setSelectedFriend] = useState(user.friends[0]);
+  const [selectedFriend, setSelectedFriend] = useState(user.friends[0] || []);
 
   return (
     <div className="flex flex-grow">
