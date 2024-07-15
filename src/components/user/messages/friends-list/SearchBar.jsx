@@ -21,7 +21,7 @@ export default function SearchBar({ setFriends }) {
         type="text"
         name="friend_search"
         placeholder="search"
-        onChange={(e) => filterFriends(e)}
+        onChange={filterFriends}
       />
     </form>
   );

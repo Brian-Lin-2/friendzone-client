@@ -18,7 +18,7 @@ async function createUser(user) {
   }
 }
 
-function populateErrors(errors, err) {
+export function populateErrors(errors, err) {
   errors.forEach((e) => {
     err[e.path] = "border-2 border-red-400";
     err[`${e.path}_msg`] = e.msg;

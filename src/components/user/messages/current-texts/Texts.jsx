@@ -12,7 +12,7 @@ export default function Texts({ friend_id }) {
     }
 
     async function getMessages() {
-      const req = await fetch(
+      const res = await fetch(
         `http://127.0.0.1:3000/message/all/${friend_id}`,
         {
           method: "GET",
@@ -21,7 +21,7 @@ export default function Texts({ friend_id }) {
           },
         }
       );
-      const data = await req.json();
+      const data = await res.json();
 
       setTexts(data.history);
     }

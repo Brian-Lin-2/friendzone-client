@@ -36,7 +36,7 @@ export default function Sidebar() {
             end
           >
             <FontAwesomeIcon icon={faUser} />
-            profile
+            edit profile
           </NavLink>
           <NavLink
             className={({ isActive }) =>
