@@ -10,7 +10,7 @@ import FriendRequests from "./components/user/friend/FriendRequests";
 
 export default function App() {
   return (
-    <div className="font-poppins">
+    <div className="div">
       <BrowserRouter>
         <Routes>
           <Route path="/">

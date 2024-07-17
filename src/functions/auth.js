@@ -37,12 +37,10 @@ async function login(user) {
   const data = await res.json();
 
   if (res.ok) {
-    // We can add more later.
-    sessionStorage.setItem("user", JSON.stringify(data.user));
     // Store a token for authentication.
     sessionStorage.setItem("token", data.token);
 
-    // Redirect to message page and change headers accordingly.
+    // Automatically redirect.
     window.location.href = "http://localhost:5173/user";
 
     // Indicates no error.

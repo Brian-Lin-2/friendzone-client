@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { token } from "../../../functions/utils";
+import useUser from "../../../functions/user";
 
-export default function FriendRequest({ friend, requests, setRequests }) {
+export default function FriendRequest({ friend }) {
+  const { setUser } = useUser();
+
   async function acceptRequest() {
     const res = await fetch(
       `http://127.0.0.1:3000/user/friend-request/${friend._id}`,
@@ -16,11 +19,8 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
     const data = await res.json();
 
-    console.log(data);
-    sessionStorage.setItem("user", JSON.stringify(data.user));
-
     if (res.ok) {
-      setRequests(requests.filter((request) => request._id !== friend._id));
+      setUser(data.user);
     }
   }
 
@@ -37,11 +37,8 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
     const data = await res.json();
 
-    console.log(data);
-    sessionStorage.setItem("user", JSON.stringify(data.user));
-
     if (res.ok) {
-      setRequests(requests.filter((request) => request._id !== friend._id));
+      setUser(data.user);
     }
   }
 

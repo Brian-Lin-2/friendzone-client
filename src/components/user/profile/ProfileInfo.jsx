@@ -1,8 +1,10 @@
 import ChangePassword from "./ChangePassword";
-import { user, token } from "../../../functions/utils";
+import { token } from "../../../functions/utils";
+import useUser from "../../../functions/user";
 import { useState } from "react";
 
 export default function ProfileInfo() {
+  const { user, setUser } = useUser();
   const [profile, setProfile] = useState(user);
   const [changePassword, setChangePassword] = useState(false);
   const [status, setStatus] = useState(false);
@@ -31,7 +33,7 @@ export default function ProfileInfo() {
 
     const data = await res.json();
 
-    setProfile(data.user);
+    setUser(data.user);
     setStatus(data.message);
   }
 

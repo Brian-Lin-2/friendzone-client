@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { user } from "../../../../functions/utils";
+import useUser from "../../../../functions/user";
 
 export default function SearchBar({ setFriends }) {
+  const { user } = useUser();
+
   function filterFriends(e) {
     e.preventDefault();
     const name = e.target.value;

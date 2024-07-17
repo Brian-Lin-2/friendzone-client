@@ -1,10 +1,11 @@
 import FriendList from "./friends-list/FriendList";
 import CurrentTexts from "./current-texts/CurrentTexts";
 import { useState } from "react";
-import { user } from "../../../functions/utils";
+import useUser from "../../../functions/user";
 
 export default function Messages() {
-  const [selectedFriend, setSelectedFriend] = useState(user.friends[0] || []);
+  const { user } = useUser();
+  const [selectedFriend, setSelectedFriend] = useState(user?.friends[0] || []);
 
   return (
     <div className="flex flex-grow">

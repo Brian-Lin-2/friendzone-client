@@ -1,9 +1,11 @@
 import SearchBar from "./SearchBar";
 import Friend from "./Friend";
 import { useState } from "react";
-import { user } from "../../../../functions/utils";
+import useUser from "../../../../functions/user";
 
 export default function FriendList({ selectedFriend, setSelectedFriend }) {
+  const { user } = useUser();
+
   // Selected friend will default be first friend.
   const [friends, setFriends] = useState(user.friends);
 

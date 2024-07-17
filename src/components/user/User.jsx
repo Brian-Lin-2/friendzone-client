@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../../functions/auth";
-import { user } from "../../functions/utils";
 import Profile from "./Profile";
+import useUser from "../../functions/user";
 
 export default function User() {
   // For now we only stored the user's first name.
+  const { user } = useUser();
+
   return (
     <div className="flex justify-between items-center mr-8">
       <Profile name={user.first_name} />

@@ -12,7 +12,6 @@ export function authenticate() {
   }
 }
 
-const user = JSON.parse(sessionStorage.getItem("user"));
 const token = sessionStorage.getItem("token");
 
-export { user, token };
+export { token };

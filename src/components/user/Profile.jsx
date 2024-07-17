@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export default function Profile({ name }) {
   return (
     <div className="flex gap-3 items-center">

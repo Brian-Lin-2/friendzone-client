@@ -1,8 +1,10 @@
 import Text from "./Text";
 import { useState, useEffect } from "react";
-import { user, token } from "../../../../functions/utils";
+import { token } from "../../../../functions/utils";
+import useUser from "../../../../functions/user";
 
 export default function Texts({ friend_id }) {
+  const { user } = useUser();
   const [texts, setTexts] = useState([]);
 
   useEffect(() => {

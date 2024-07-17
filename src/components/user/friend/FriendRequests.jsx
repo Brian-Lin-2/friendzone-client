@@ -1,24 +1,16 @@
 import FriendRequest from "./FriendRequest";
-import { user } from "../../../functions/utils";
-import { useState } from "react";
+import useUser from "../../../functions/user";
 
 export default function FriendRequests() {
-  const [requests, setRequests] = useState(user.pending_requests);
+  const { user } = useUser();
 
   return (
     <div className="flex flex-grow bg-light-pink items-center justify-center pl-32">
-      <div className="mt-12 gap-4 bg-transparent-white p-8 rounded-lg flex-grow self-start">
+      <div className="mt-12 gap-4 bg-transparent-white p-8 rounded-lg flex-grow self-start min-h-[90%]">
         <h1 className="text-2xl mb-6 text-font-gray">Friend Requests</h1>
         <ul>
-          {requests.map((request) => {
-            return (
-              <FriendRequest
-                key={request._id}
-                friend={request}
-                requests={requests}
-                setRequests={setRequests}
-              />
-            );
+          {user.pending_requests.map((request) => {
+            return <FriendRequest key={request._id} friend={request} />;
           })}
         </ul>
       </div>
