@@ -1,3 +1,5 @@
+import { io } from "socket.io-client";
+
 export function isLoggedIn() {
   if (sessionStorage.getItem("token")) {
     // We want to always redirect to the user page.
@@ -12,6 +14,18 @@ export function authenticate() {
   }
 }
 
+let socket = null;
+
+export function createSocket(userId) {
+  if (!socket) {
+    socket = io("http://127.0.0.1:3000", {
+      query: {
+        userId,
+      },
+    });
+  }
+}
+
 const token = sessionStorage.getItem("token");
 
-export { token };
+export { token, socket };

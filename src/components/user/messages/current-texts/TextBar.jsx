@@ -1,21 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
-import { token } from "../../../../functions/utils";
+import { token, socket } from "../../../../functions/utils";
 
-export default function TextBar({ friend_id }) {
+export default function TextBar({ friend_id, texts, setTexts }) {
   async function send_message(e) {
     e.preventDefault();
 
-    await fetch(`http://127.0.0.1:3000/message/${friend_id}`, {
+    const text = e.target.message.value;
+
+    const res = await fetch(`http://127.0.0.1:3000/message/${friend_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        text: e.target.message.value,
+        text,
       }),
     });
+
+    const data = await res.json();
+    const message = data.sent_message;
+
+    socket.emit("send message", { friend_id, message });
+
+    setTexts([...texts, message]);
 
     e.target.message.value = "";
   }

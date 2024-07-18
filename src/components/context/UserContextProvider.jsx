@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from "react";
-import { token } from "../../functions/utils";
+import { token, createSocket } from "../../functions/utils";
 
 export const UserContext = createContext({ user: {}, setUser: () => {} });
 
@@ -16,6 +16,9 @@ export default function UserContextProvider({ children }) {
       });
 
       const data = await res.json();
+
+      // Set up a web socket.
+      createSocket(data.user._id);
 
       setUser(data.user);
     }

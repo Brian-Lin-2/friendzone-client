@@ -1,11 +1,10 @@
 import Text from "./Text";
 import { useState, useEffect } from "react";
-import { token } from "../../../../functions/utils";
+import { token, socket } from "../../../../functions/utils";
 import useUser from "../../../../functions/user";
 
-export default function Texts({ friend_id }) {
+export default function Texts({ friend_id, texts, setTexts }) {
   const { user } = useUser();
-  const [texts, setTexts] = useState([]);
 
   useEffect(() => {
     // Edge case. No friends.
@@ -29,7 +28,12 @@ export default function Texts({ friend_id }) {
     }
 
     getMessages();
-  }, [friend_id]);
+  }, [friend_id, setTexts]);
+
+  // Realtime chat.
+  socket.on("chat message", (text) => {
+    setTexts([...texts, text]);
+  });
 
   return (
     <li className="flex flex-col flex-grow justify-end items-stenart pl-8 pr-10 gap-2">
