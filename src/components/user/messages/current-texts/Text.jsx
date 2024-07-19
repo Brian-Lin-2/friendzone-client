@@ -2,7 +2,7 @@
 export default function Text({ user, message }) {
   return (
     <span
-      className={`px-4 py-2 rounded-lg bg-dark-pink text-font-gray max-w-[45%] ${
+      className={`px-4 py-2 rounded-lg bg-dark-pink text-sm md:text-base text-font-gray max-w-[45%] ${
         user ? "self-end" : "self-start"
       }`}
     >

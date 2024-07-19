@@ -1,10 +1,18 @@
-export default function Friend({ friend, selected, setSelectedFriend }) {
+export default function Friend({
+  friend,
+  selected,
+  setSelectedFriend,
+  setMobileMessages,
+}) {
   return (
     <button
       className={`flex justify-between items-center p-4 rounded-lg ${
         selected ? "bg-pink" : ""
       }`}
-      onClick={() => setSelectedFriend(friend)}
+      onClick={() => {
+        setSelectedFriend(friend);
+        setMobileMessages(true);
+      }}
     >
       <div className="flex items-center gap-3">
         <img

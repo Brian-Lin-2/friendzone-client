@@ -6,6 +6,7 @@ import useUser from "../../../functions/user";
 export default function Messages() {
   const { user } = useUser();
   const [selectedFriend, setSelectedFriend] = useState(user?.friends[0] || []);
+  const [mobileMessages, setMobileMessages] = useState(false);
 
   return (
     <div className="flex flex-grow">
@@ -13,8 +14,14 @@ export default function Messages() {
       <FriendList
         selectedFriend={selectedFriend}
         setSelectedFriend={setSelectedFriend}
+        mobileMessages={mobileMessages}
+        setMobileMessages={setMobileMessages}
       />
-      <CurrentTexts selectedFriend={selectedFriend} />
+      <CurrentTexts
+        selectedFriend={selectedFriend}
+        mobileMessages={mobileMessages}
+        setMobileMessages={setMobileMessages}
+      />
     </div>
   );
 }

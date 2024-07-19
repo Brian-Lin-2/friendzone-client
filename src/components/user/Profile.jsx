@@ -6,7 +6,7 @@ export default function Profile({ name }) {
         src="/images/pfp.png"
         alt="pfp"
       />
-      <span className="capitalize">{name}</span>
+      <span className="capitalize max-w-40 md:max-w-none">{name}</span>
     </div>
   );
 }

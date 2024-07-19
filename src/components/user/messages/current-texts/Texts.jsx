@@ -55,7 +55,7 @@ export default function Texts({ friend_id, texts, setTexts }) {
   return (
     <ul
       ref={messagesEndRef}
-      className="flex flex-col flex-grow max-h-[550px] pl-8 pr-10 gap-2 overflow-y-scroll relative"
+      className="flex flex-col flex-grow max-h-[460px] md:max-h-[550px] pl-8 pr-10 gap-2 pt-4 overflow-y-scroll relative"
     >
       {texts.map((e) => {
         return <Text key={e._id} user={e.from === user._id} message={e.text} />;

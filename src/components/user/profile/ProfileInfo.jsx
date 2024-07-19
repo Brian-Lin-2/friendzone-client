@@ -99,7 +99,7 @@ export default function ProfileInfo() {
             )}
           </form>
           <button
-            className="mt-2 text-sm md:text-md underline text-font-gray"
+            className="mt-2 text-sm md:text-base underline text-font-gray"
             onClick={() => setChangePassword(true)}
           >
             change password

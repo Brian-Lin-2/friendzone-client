@@ -2,13 +2,26 @@ import Profile from "../../Profile";
 import Texts from "./Texts";
 import TextBar from "./TextBar";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
-export default function CurrentTexts({ selectedFriend }) {
+export default function CurrentTexts({
+  selectedFriend,
+  mobileMessages,
+  setMobileMessages,
+}) {
   const [texts, setTexts] = useState([]);
 
   return (
-    <div className="flex flex-col flex-grow">
-      <div className="h-20 bg-light-pink flex pl-6">
+    <div
+      className={`md:flex flex-col flex-grow ${
+        mobileMessages ? "flex" : "hidden"
+      }`}
+    >
+      <div className="h-[86px] md:h-20 bg-light-pink flex items-center pl-6">
+        <button className="md:hidden" onClick={() => setMobileMessages(false)}>
+          <FontAwesomeIcon className="h-6 mr-4 mt-1" icon={faLeftLong} />
+        </button>
         <Profile name={selectedFriend.full_name} />
       </div>
 
