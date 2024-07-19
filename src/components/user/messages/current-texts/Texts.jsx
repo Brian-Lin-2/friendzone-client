@@ -1,7 +1,8 @@
 import Text from "./Text";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { token, socket } from "../../../../functions/utils";
 import useUser from "../../../../functions/user";
+import Loading from "../../../misc/Loading";
 
 export default function Texts({ friend_id, texts, setTexts }) {
   const { user } = useUser();
@@ -35,11 +36,31 @@ export default function Texts({ friend_id, texts, setTexts }) {
     setTexts([...texts, text]);
   });
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    console.log(messagesEndRef.current);
+    scrollToBottom();
+  }, [texts]);
+
+  if (texts.length === 0) {
+    return <Loading />;
+  }
+
   return (
-    <li className="flex flex-col flex-grow justify-end items-stenart pl-8 pr-10 gap-2">
+    <ul
+      ref={messagesEndRef}
+      className="flex flex-col flex-grow max-h-[550px] pl-8 pr-10 gap-2 overflow-y-scroll relative"
+    >
       {texts.map((e) => {
         return <Text key={e._id} user={e.from === user._id} message={e.text} />;
       })}
-    </li>
+    </ul>
   );
 }
