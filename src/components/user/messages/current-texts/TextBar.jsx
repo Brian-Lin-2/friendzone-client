@@ -39,6 +39,7 @@ export default function TextBar({ friend_id, texts, setTexts }) {
         type="text"
         name="message"
         placeholder="send message"
+        autoFocus
       />
       <button>
         <FontAwesomeIcon

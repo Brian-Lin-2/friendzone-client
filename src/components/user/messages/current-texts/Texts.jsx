@@ -45,7 +45,6 @@ export default function Texts({ friend_id, texts, setTexts }) {
   };
 
   useEffect(() => {
-    console.log(messagesEndRef.current);
     scrollToBottom();
   }, [texts]);
 
