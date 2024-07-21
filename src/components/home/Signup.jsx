@@ -25,7 +25,7 @@ export default function Signup() {
           onSubmit={(e) => attemptSignup(e, setErrors)}
         >
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.username}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.username}`}
             type="text"
             name="username"
             placeholder="username"
@@ -37,7 +37,7 @@ export default function Signup() {
             </span>
           )}
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.password}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.password}`}
             type="password"
             name="password"
             placeholder="password"
@@ -48,7 +48,7 @@ export default function Signup() {
             </span>
           )}
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.first_name}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.first_name}`}
             type="text"
             name="first_name"
             placeholder="first name"
@@ -59,7 +59,7 @@ export default function Signup() {
             </span>
           )}
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.last_name}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.last_name}`}
             type="text"
             name="last_name"
             placeholder="last name"
@@ -69,7 +69,7 @@ export default function Signup() {
               {errors.last_name_msg}
             </span>
           )}
-          <button className="font-bold mt-2 md:mt-4 bg-font-gray text-sm md:text-lg py-2 md:py-3 rounded text-white hover:bg-active-pink hover:border-active-pink hover:text-black">
+          <button className="font-bold mt-2 md:mt-4 bg-font-gray text-sm md:text-base py-2 md:py-3 rounded text-white hover:bg-active-pink hover:border-active-pink hover:text-black">
             sign up
           </button>
         </form>

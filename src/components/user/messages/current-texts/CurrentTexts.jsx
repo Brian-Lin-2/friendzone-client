@@ -11,6 +11,7 @@ export default function CurrentTexts({
   setMobileMessages,
 }) {
   const [texts, setTexts] = useState([]);
+  const [isTexting, setIsTexting] = useState(false);
 
   return (
     <div
@@ -30,11 +31,15 @@ export default function CurrentTexts({
           friend_id={selectedFriend._id}
           texts={texts}
           setTexts={setTexts}
+          isTexting={isTexting}
+          mobileMessages={mobileMessages}
         />
         <TextBar
           friend_id={selectedFriend._id}
           texts={texts}
           setTexts={setTexts}
+          isTexting={isTexting}
+          setIsTexting={setIsTexting}
         />
       </div>
     </div>

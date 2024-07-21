@@ -13,6 +13,7 @@ export default {
         gray: "#DED1CB",
         "dark-gray": "#D1C6BF",
         "font-gray": "#36454F",
+        "transparent-gray": "rgba(228, 221, 216, 0.8)",
         "transparent-white": "rgba(255, 255, 255, 0.6)",
       },
       fontFamily: {

@@ -4,7 +4,13 @@ import { token, socket } from "../../../../functions/utils";
 import useUser from "../../../../functions/user";
 import Loading from "../../../misc/Loading";
 
-export default function Texts({ friend_id, texts, setTexts }) {
+export default function Texts({
+  friend_id,
+  texts,
+  setTexts,
+  isTexting,
+  mobileMessages,
+}) {
   const { user } = useUser();
 
   useEffect(() => {
@@ -46,7 +52,7 @@ export default function Texts({ friend_id, texts, setTexts }) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [texts]);
+  }, [texts, isTexting, mobileMessages]);
 
   if (texts.length === 0) {
     return <Loading />;
@@ -55,11 +61,20 @@ export default function Texts({ friend_id, texts, setTexts }) {
   return (
     <ul
       ref={messagesEndRef}
-      className="flex flex-col flex-grow max-h-[460px] md:max-h-[550px] pl-8 pr-10 gap-2 pt-4 overflow-y-scroll relative"
+      className="flex-grow pl-12 gap-2 pr-10 overflow-y-scroll relative"
     >
-      {texts.map((e) => {
-        return <Text key={e._id} user={e.from === user._id} message={e.text} />;
-      })}
+      <div className="flex flex-col absolute gap-2 inset-0 p-4 mx-4">
+        {texts.map((e) => {
+          return (
+            <Text key={e._id} user={e.from === user._id} message={e.text} />
+          );
+        })}
+        {isTexting && (
+          <span className="px-4 py-2 animate-pulse rounded-lg bg-dark-pink text-sm md:text-base self-start text-font-gray">
+            . . .
+          </span>
+        )}
+      </div>
     </ul>
   );
 }

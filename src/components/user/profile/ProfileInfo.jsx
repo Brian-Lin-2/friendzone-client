@@ -43,17 +43,17 @@ export default function ProfileInfo() {
         <div className="flex flex-col items-center bg-transparent-white p-12 rounded-lg md:w-[400px]">
           <h1 className="text-2xl text-font-gray mb-6">Edit Profile</h1>
           <form
-            className="flex flex-col gap-3 md:gap-5 w-full"
+            className="flex flex-col gap-3 md:gap-4 w-full"
             onSubmit={handleUpdate}
           >
             <label
-              className="-mb-3 md:-mb-5 text-sm md:text-lg text-font-gray"
+              className="-mb-3 md:-mb-4 text-sm md:text-base text-font-gray"
               htmlFor="username"
             >
               username:
             </label>
             <input
-              className="px-4 py-2 rounded text-sm md:text-lg placeholder:text-font-gray text-font-gray"
+              className="px-4 py-2 rounded text-sm md:text-base placeholder:text-font-gray text-font-gray"
               type="text"
               id="username"
               name="username"
@@ -62,13 +62,13 @@ export default function ProfileInfo() {
             />
 
             <label
-              className="-mb-3 md:-mb-5 text-sm md:text-lg text-font-gray"
+              className="-mb-3 md:-mb-4 text-sm md:text-base text-font-gray"
               htmlFor="first_name"
             >
               first name:
             </label>
             <input
-              className="px-4 py-2 rounded text-sm md:text-lg placeholder:text-font-gray text-font-gray"
+              className="px-4 py-2 rounded text-sm md:text-base placeholder:text-font-gray text-font-gray"
               type="text"
               id="first_name"
               name="first_name"
@@ -77,13 +77,13 @@ export default function ProfileInfo() {
             />
 
             <label
-              className="-mb-3 md:-mb-5 text-sm md:text-lg text-font-gray"
+              className="-mb-3 md:-mb-4 text-sm md:text-base text-font-gray"
               htmlFor="last_name"
             >
               last name:
             </label>
             <input
-              className="px-4 py-2 rounded text-sm md:text-lg placeholder:text-font-gray text-font-gray"
+              className="px-4 py-2 rounded text-sm md:text-base placeholder:text-font-gray text-font-gray"
               type="text"
               id="last_name"
               name="last_name"
@@ -91,7 +91,7 @@ export default function ProfileInfo() {
               onChange={(e) => changeProfile(e, "username")}
             />
 
-            <button className="border-2 rounded-lg text-sm md:text-lg bg-black text-white p-2">
+            <button className="border-2 rounded-lg text-sm md:text-base bg-black text-white p-2">
               save changes
             </button>
             {status && (

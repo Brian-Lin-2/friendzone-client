@@ -23,7 +23,7 @@ export default function Login() {
           onSubmit={(e) => attemptLogin(e, setErrors)}
         >
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.username}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.username}`}
             type="text"
             name="username"
             placeholder="username"
@@ -35,7 +35,7 @@ export default function Login() {
             </span>
           )}
           <input
-            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-lg rounded ${errors?.password}`}
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.password}`}
             type="password"
             name="password"
             placeholder="password"
@@ -45,7 +45,7 @@ export default function Login() {
               {errors.password_msg}
             </span>
           )}
-          <button className="text-sm md:text-lg font-bold mt-2 md:mt-4 bg-font-gray py-2 md:py-3 rounded text-white hover:bg-active-pink hover:border-active-pink hover:text-black">
+          <button className="text-sm md:text-base font-bold mt-2 md:mt-4 bg-font-gray py-2 md:py-3 rounded text-white hover:bg-active-pink hover:border-active-pink hover:text-black">
             login
           </button>
         </form>

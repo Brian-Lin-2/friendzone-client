@@ -16,7 +16,7 @@ export default function FriendList({
 
   return (
     <div
-      className={`w-80 md:block bg-light-pink border-r border-dark-gray ${
+      className={`flex-grow md:flex-grow-0 md:w-80 md:block bg-light-pink border-r border-dark-gray ${
         mobileMessages ? "hidden" : "block"
       }`}
     >

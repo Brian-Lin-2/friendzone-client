@@ -1,8 +1,9 @@
+import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 import { token, socket } from "../../../../functions/utils";
 
-export default function TextBar({ friend_id, texts, setTexts }) {
+export default function TextBar({ friend_id, texts, setTexts, setIsTexting }) {
   async function send_message(e) {
     e.preventDefault();
 
@@ -29,6 +30,31 @@ export default function TextBar({ friend_id, texts, setTexts }) {
     e.target.message.value = "";
   }
 
+  // We will store a reference of the old timeout.
+  const typingTimeoutRef = useRef(null);
+
+  socket.on("stop typing", () => {
+    setIsTexting(false);
+
+    // Clear the previous timeout if it exists
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+  });
+
+  socket.on("typing", () => {
+    setIsTexting(true);
+
+    // Clear the previous timeout if it exists
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      setIsTexting(false);
+    }, 2000);
+  });
+
   return (
     <form
       className="ml-8 my-4 flex items-center"
@@ -39,6 +65,7 @@ export default function TextBar({ friend_id, texts, setTexts }) {
         type="text"
         name="message"
         placeholder="send message"
+        onChange={() => socket.emit("typing", { friend_id })}
         autoFocus
       />
       <button>
