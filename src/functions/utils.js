@@ -23,9 +23,26 @@ export function createSocket(userId) {
         userId,
       },
     });
+
+    socket.on("connect", () => {
+      console.log("Socket connected:", socket.id);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Socket disconnected:", socket.id);
+      socket = null;
+    });
+  }
+}
+
+export function disconnectSocket() {
+  if (socket) {
+    socket.disconnect();
+    socket = null; // Ensure to reset socket to null
   }
 }
 
 const token = sessionStorage.getItem("token");
+const demo = sessionStorage.getItem("demo");
 
-export { token, socket };
+export { token, demo, socket };

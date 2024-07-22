@@ -1,3 +1,21 @@
+import { disconnectSocket } from "./utils";
+
+export async function handleGuest() {
+  // Default values for guest user.
+  const random_name = Math.round(Math.random() * 100000000);
+  const random_pw = Math.round(Math.random() * 100000000);
+
+  const guest = {
+    username: `guest${random_name}`,
+    password: random_pw,
+    first_name: "Guest",
+    last_name: "Account",
+  };
+
+  sessionStorage.setItem("guest", true);
+  createUser(guest);
+}
+
 async function createUser(user) {
   const res = await fetch("http://127.0.0.1:3000/user/signup", {
     method: "POST",
@@ -98,5 +116,6 @@ export async function attemptLogin(e, setErrors) {
 
 export function logout() {
   sessionStorage.clear();
+  disconnectSocket();
   window.location.href = "http://localhost:5173";
 }

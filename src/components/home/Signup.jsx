@@ -48,6 +48,17 @@ export default function Signup() {
             </span>
           )}
           <input
+            className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.password}`}
+            type="password"
+            name="confirm_password"
+            placeholder="confirm password"
+          />
+          {errors?.confirm_password_msg && (
+            <span className="text-xs md:text-sm -mt-2 md:-mt-3 text-red-400">
+              {errors.confirm_password_msg}
+            </span>
+          )}
+          <input
             className={`px-4 md:px-6 py-2 md:py-3 bg-white text-font-gray placeholder-font-gray text-sm md:text-base rounded ${errors?.first_name}`}
             type="text"
             name="first_name"

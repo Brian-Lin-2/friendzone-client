@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import { token, createSocket } from "../../functions/utils";
+import Loading from "../misc/Loading";
 
 export const UserContext = createContext({ user: {}, setUser: () => {} });
 
@@ -27,7 +28,11 @@ export default function UserContextProvider({ children }) {
   }, []);
 
   if (!user) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="flex min-h-screen bg-light-pink">
+        <Loading />
+      </div>
+    );
   }
 
   return (

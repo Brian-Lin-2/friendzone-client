@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { handleGuest } from "../../functions/auth";
 import { isLoggedIn } from "../../functions/utils";
 
 export default function Home() {
@@ -28,6 +29,13 @@ export default function Home() {
         >
           sign up
         </Link>
+
+        <button
+          className="text-sm md:text-base underline font-bold text-font-gray rounded w-32 md:w-52 text-center hover:text-active-pink"
+          onClick={handleGuest}
+        >
+          guest login
+        </button>
       </nav>
     </div>
   );
