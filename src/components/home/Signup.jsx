@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { attemptSignup } from "../../functions/auth";
 import { isLoggedIn } from "../../functions/utils";
 
 export default function Signup() {
   // Edge case for logged in user.
-  useEffect(() => {
-    isLoggedIn();
-  }, []);
+  isLoggedIn();
 
   const [errors, setErrors] = useState(null);
 

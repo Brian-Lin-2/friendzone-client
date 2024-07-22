@@ -25,12 +25,22 @@ export function createSocket(userId) {
     });
 
     socket.on("connect", () => {
-      console.log("Socket connected:", socket.id);
+      console.log(`Socket connected: ${socket.id}`);
     });
 
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected:", socket.id);
+    socket.on("disconnect", async () => {
       socket = null;
+
+      if (guest) {
+        await fetch("http://127.0.0.1:3000/user", {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      }
+
+      sessionStorage.clear();
     });
   }
 }
@@ -43,6 +53,6 @@ export function disconnectSocket() {
 }
 
 const token = sessionStorage.getItem("token");
-const demo = sessionStorage.getItem("demo");
+const guest = sessionStorage.getItem("guest");
 
-export { token, demo, socket };
+export { token, guest, socket };

@@ -1,4 +1,4 @@
-import { disconnectSocket } from "./utils";
+import { disconnectSocket, guest, token } from "./utils";
 
 export async function handleGuest() {
   // Default values for guest user.
@@ -8,8 +8,9 @@ export async function handleGuest() {
   const guest = {
     username: `guest${random_name}`,
     password: random_pw,
-    first_name: "Guest",
-    last_name: "Account",
+    confirm_password: random_pw,
+    first_name: "guest",
+    last_name: "account",
   };
 
   sessionStorage.setItem("guest", true);
@@ -64,13 +65,11 @@ async function login(user) {
     // Indicates no error.
     return null;
   } else {
-    // Edge case for when user is not in the system.
+    // Edge case for if no error was provided.
     const user_error = {
       errors: [
-        {
-          path: "username",
-          msg: "User is not in the system.",
-        },
+        { msg: "An error has occured.", path: "username" },
+        { msg: "An error has occured.", path: "password" },
       ],
     };
 
@@ -84,6 +83,7 @@ export async function attemptSignup(e, setErrors) {
   const user = {
     username: e.target.username.value,
     password: e.target.password.value,
+    confirm_password: e.target.confirm_password.value,
     first_name: e.target.first_name.value,
     last_name: e.target.last_name.value,
   };
@@ -114,8 +114,8 @@ export async function attemptLogin(e, setErrors) {
   }
 }
 
-export function logout() {
-  sessionStorage.clear();
+export async function logout() {
   disconnectSocket();
+  sessionStorage.clear();
   window.location.href = "http://localhost:5173";
 }
