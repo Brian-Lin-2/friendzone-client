@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 export function isLoggedIn() {
-  if (sessionStorage.getItem("token")) {
+  if (token) {
     // We want to always redirect to the user page.
     window.location.href = "http://localhost:5173/user";
   }
@@ -9,7 +9,7 @@ export function isLoggedIn() {
 
 export function authenticate() {
   // Checks to see if there's a user.
-  if (!sessionStorage.getItem("token")) {
+  if (!token) {
     window.location.href = "http://localhost:5173/login";
   }
 }
@@ -39,8 +39,6 @@ export function createSocket(userId) {
           },
         });
       }
-
-      sessionStorage.clear();
     });
   }
 }
@@ -48,11 +46,11 @@ export function createSocket(userId) {
 export function disconnectSocket() {
   if (socket) {
     socket.disconnect();
-    socket = null; // Ensure to reset socket to null
+    socket = null;
   }
 }
 
-const token = sessionStorage.getItem("token");
-const guest = sessionStorage.getItem("guest");
+const token = localStorage.getItem("token");
+const guest = localStorage.getItem("guest");
 
 export { token, guest, socket };

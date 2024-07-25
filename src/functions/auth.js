@@ -1,4 +1,4 @@
-import { disconnectSocket, guest, token } from "./utils";
+import { disconnectSocket } from "./utils";
 
 export async function handleGuest() {
   // Default values for guest user.
@@ -13,7 +13,7 @@ export async function handleGuest() {
     last_name: "account",
   };
 
-  sessionStorage.setItem("guest", true);
+  localStorage.setItem("guest", true);
   createUser(guest);
 }
 
@@ -57,7 +57,7 @@ async function login(user) {
 
   if (res.ok) {
     // Store a token for authentication.
-    sessionStorage.setItem("token", data.token);
+    localStorage.setItem("token", data.token);
 
     // Automatically redirect.
     window.location.href = "http://localhost:5173/user";
@@ -116,6 +116,6 @@ export async function attemptLogin(e, setErrors) {
 
 export async function logout() {
   disconnectSocket();
-  sessionStorage.clear();
+  localStorage.clear();
   window.location.href = "http://localhost:5173";
 }

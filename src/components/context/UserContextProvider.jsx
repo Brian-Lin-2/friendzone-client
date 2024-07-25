@@ -9,19 +9,25 @@ export default function UserContextProvider({ children }) {
 
   useEffect(() => {
     async function populateUser() {
-      const res = await fetch("http://localhost:3000/user", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      try {
+        const res = await fetch("http://localhost:3000/user", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      const data = await res.json();
+        const data = await res.json();
 
-      // Set up a web socket.
-      createSocket(data.user._id);
+        // Set up a web socket.
+        createSocket(data.user._id);
 
-      setUser(data.user);
+        setUser(data.user);
+      } catch (err) {
+        // This should never be reached.
+        localStorage.clear();
+        window.location.href = "http://localhost:5173";
+      }
     }
 
     populateUser();

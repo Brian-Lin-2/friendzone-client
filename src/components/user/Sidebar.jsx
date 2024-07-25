@@ -31,7 +31,7 @@ export default function Sidebar({ showMenu, setShowMenu }) {
         }`}
       >
         <div>
-          <img className="w-12 mb-16" src="/images/favicon.png" />
+          <img className="w-12 mb-16" src="/images/logo.png" />
 
           <div className="flex flex-col justify-end text-lg">
             <NavLink

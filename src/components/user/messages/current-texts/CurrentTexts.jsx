@@ -4,6 +4,7 @@ import TextBar from "./TextBar";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { BOT_NAME } from "../../../../functions/bot";
 
 export default function CurrentTexts({
   selectedFriend,
@@ -23,7 +24,10 @@ export default function CurrentTexts({
         <button className="md:hidden" onClick={() => setMobileMessages(false)}>
           <FontAwesomeIcon className="h-6 mr-4 mt-1" icon={faLeftLong} />
         </button>
-        <Profile name={selectedFriend.full_name} />
+        <Profile
+          name={selectedFriend.full_name}
+          isBot={selectedFriend.username === BOT_NAME}
+        />
       </div>
 
       <div className="flex-grow bg-transparent-pink flex flex-col justify-between">
@@ -40,6 +44,7 @@ export default function CurrentTexts({
           setTexts={setTexts}
           isTexting={isTexting}
           setIsTexting={setIsTexting}
+          isBot={selectedFriend.username === BOT_NAME}
         />
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function User() {
 
   return (
     <div className="flex justify-between items-center mr-8">
-      <Profile name={user.first_name} />
+      <Profile name={user.first_name} isBot={false} />
       <FontAwesomeIcon
         className="h-6 text-red-400 rotate-180 cursor-pointer hover:text-red-500"
         icon={faRightFromBracket}
