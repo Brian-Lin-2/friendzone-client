@@ -1,5 +1,5 @@
 import Text from "./Text";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { token, socket } from "../../../../functions/utils";
 import useUser from "../../../../functions/user";
 import Loading from "../../../misc/Loading";
@@ -11,13 +11,17 @@ export default function Texts({
   isTexting,
   mobileMessages,
 }) {
+  const [loading, setLoading] = useState(true);
   const { user } = useUser();
 
   useEffect(() => {
     // Edge case. No friends.
     if (!friend_id) {
+      setLoading(false);
       return;
     }
+
+    setLoading(true);
 
     async function getMessages() {
       const res = await fetch(
@@ -32,6 +36,7 @@ export default function Texts({
       const data = await res.json();
 
       setTexts(data.history);
+      setLoading(false);
     }
 
     getMessages();
@@ -54,27 +59,23 @@ export default function Texts({
     scrollToBottom();
   }, [texts, isTexting, mobileMessages]);
 
-  if (texts.length === 0) {
+  if (loading) {
     return <Loading />;
   }
 
   return (
     <ul
       ref={messagesEndRef}
-      className="flex-grow pl-12 gap-2 pr-10 overflow-y-scroll relative"
+      className="flex flex-col gap-2 flex-grow pt-4 px-8 max-h-[75vh] md:max-h-[550px] overflow-y-scroll"
     >
-      <div className="flex flex-col absolute gap-2 inset-0 p-4 mx-4">
-        {texts.map((e) => {
-          return (
-            <Text key={e._id} user={e.from === user._id} message={e.text} />
-          );
-        })}
-        {isTexting && (
-          <span className="px-4 py-2 animate-pulse rounded-lg bg-dark-pink text-sm md:text-base self-start text-font-gray">
-            . . .
-          </span>
-        )}
-      </div>
+      {texts.map((e) => {
+        return <Text key={e._id} user={e.from === user._id} message={e.text} />;
+      })}
+      {isTexting && (
+        <span className="px-4 py-2 animate-pulse rounded-lg bg-dark-pink text-sm md:text-base self-start text-font-gray">
+          . . .
+        </span>
+      )}
     </ul>
   );
 }

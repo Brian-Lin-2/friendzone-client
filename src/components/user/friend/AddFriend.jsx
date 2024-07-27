@@ -1,13 +1,15 @@
-import { token } from "../../../functions/utils";
+import { token, socket } from "../../../functions/utils";
+import useUser from "../../../functions/user";
 import { useState } from "react";
 
 export default function AddFriend() {
   const [result, setResult] = useState(null);
+  const { user } = useUser();
 
   async function sendRequest(e) {
     e.preventDefault();
 
-    const user = JSON.stringify({
+    const friend = JSON.stringify({
       name: e.target.username.value,
     });
 
@@ -17,7 +19,7 @@ export default function AddFriend() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: user,
+      body: friend,
     });
 
     const body = await res.json();
@@ -25,6 +27,12 @@ export default function AddFriend() {
     setResult(body);
 
     if (res.ok) {
+      console.log("senidng request");
+      socket.emit("send request", {
+        friend_id: body.user._id,
+        request: user,
+      });
+
       e.target.username.value = "";
     }
   }

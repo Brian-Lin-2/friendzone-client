@@ -24,6 +24,9 @@ export function createSocket(userId) {
       },
     });
 
+    socket.emit("login");
+
+    // Socket events.
     socket.on("connect", () => {
       console.log(`Socket connected: ${socket.id}`);
     });

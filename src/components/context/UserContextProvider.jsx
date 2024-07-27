@@ -1,6 +1,7 @@
 import { useState, createContext, useEffect } from "react";
-import { token, createSocket } from "../../functions/utils";
+import { createSocket } from "../../functions/utils";
 import Loading from "../misc/Loading";
+import { getUser } from "../../functions/user";
 
 export const UserContext = createContext({ user: {}, setUser: () => {} });
 
@@ -9,25 +10,12 @@ export default function UserContextProvider({ children }) {
 
   useEffect(() => {
     async function populateUser() {
-      try {
-        const res = await fetch("http://localhost:3000/user", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+      const user = await getUser();
 
-        const data = await res.json();
+      // Set up a web socket.
+      createSocket(user._id);
 
-        // Set up a web socket.
-        createSocket(data.user._id);
-
-        setUser(data.user);
-      } catch (err) {
-        // This should never be reached.
-        localStorage.clear();
-        window.location.href = "http://localhost:5173";
-      }
+      setUser(user);
     }
 
     populateUser();

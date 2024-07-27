@@ -3,7 +3,7 @@ import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { token } from "../../../functions/utils";
 import useUser from "../../../functions/user";
 
-export default function FriendRequest({ friend }) {
+export default function FriendRequest({ friend, requests, setRequests }) {
   const { setUser } = useUser();
 
   async function acceptRequest() {
@@ -21,6 +21,7 @@ export default function FriendRequest({ friend }) {
 
     if (res.ok) {
       setUser(data.user);
+      setRequests(requests.filter((request) => request._id !== friend._id));
     }
   }
 
@@ -46,7 +47,7 @@ export default function FriendRequest({ friend }) {
     <div className="flex justify-between items-center w-full py-4 flex-grow">
       <div className="flex items-center gap-3">
         <img
-          className="border rounded-full border-font-gray w-10 md:w-12 p-2 bg-white"
+          className="border rounded-full border-font-gray w-10 p-2 bg-white"
           src="/images/pfp.png"
           alt=""
         />
@@ -55,14 +56,14 @@ export default function FriendRequest({ friend }) {
       <div className="flex gap-3">
         <button onClick={acceptRequest}>
           <FontAwesomeIcon
-            className="text-green-500 md:h-6 hover:text-green-400"
+            className="text-green-500 md:h-5 hover:text-green-400"
             icon={faCheck}
           />
         </button>
 
         <button onClick={rejectRequest}>
           <FontAwesomeIcon
-            className="text-red-500 md:h-6 hover:text-red-400"
+            className="text-red-500 md:h-5 hover:text-red-400"
             icon={faXmark}
           />
         </button>

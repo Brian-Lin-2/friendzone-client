@@ -18,9 +18,6 @@ export default function Friend({
       }}
     >
       <Profile name={friend.full_name} isBot={friend.username === BOT_NAME} />
-
-      {/* TODO: Unopened messages */}
-      {/* <span className="bg-red-400 rounded px-2 py-0.5 text-xs">1</span> */}
     </button>
   );
 }
