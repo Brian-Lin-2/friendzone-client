@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 import { token, socket } from "../../../../functions/utils";
@@ -12,7 +12,7 @@ export default function TextBar({
   setIsTexting,
   isBot,
 }) {
-  // This is only for texting with the bot.
+  // This is only for texting with the bot
   const [disabled, setDisabled] = useState(false);
   const { user } = useUser();
 
@@ -40,7 +40,7 @@ export default function TextBar({
     const data = await res.json();
     const message = data.sent_message;
 
-    socket.emit("send message", { friend_id, message });
+    socket.emit("send message", { user_id: user._id, friend_id, message });
 
     // Edge case for bot messaging.
     if (isBot) {
@@ -62,27 +62,42 @@ export default function TextBar({
   // We will store a reference of the old timeout.
   const typingTimeoutRef = useRef(null);
 
-  socket.on("stop typing", () => {
-    setIsTexting(false);
+  useEffect(() => {
+    function stop_typing(user_id) {
+      if (user_id === friend_id) {
+        setIsTexting(false);
 
-    // Clear the previous timeout if it exists
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-    }
-  });
-
-  socket.on("typing", () => {
-    setIsTexting(true);
-
-    // Clear the previous timeout if it exists
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
+        // Clear the previous timeout if it exists
+        if (typingTimeoutRef.current) {
+          clearTimeout(typingTimeoutRef.current);
+        }
+      }
     }
 
-    typingTimeoutRef.current = setTimeout(() => {
-      setIsTexting(false);
-    }, 2000);
-  });
+    function start_typing(user_id) {
+      if (user_id === friend_id) {
+        setIsTexting(true);
+
+        // Clear the previous timeout if it exists
+        if (typingTimeoutRef.current) {
+          clearTimeout(typingTimeoutRef.current);
+        }
+
+        typingTimeoutRef.current = setTimeout(() => {
+          setIsTexting(false);
+        }, 2000);
+      }
+    }
+
+    socket.on("stop typing", stop_typing);
+    socket.on("typing", start_typing);
+
+    // Clean up the event listeners on unmount
+    return () => {
+      socket.off("stop typing", stop_typing);
+      socket.off("typing", start_typing);
+    };
+  }, [friend_id]);
 
   return (
     <form
@@ -94,7 +109,7 @@ export default function TextBar({
         type="text"
         name="message"
         placeholder="send message"
-        onChange={() => socket.emit("typing", { friend_id })}
+        onChange={() => socket.emit("typing", { user_id: user._id, friend_id })}
         disabled={disabled}
         autoFocus
       />

@@ -26,7 +26,7 @@ export default function Sidebar({ showMenu, setShowMenu }) {
         )}
       </button>
       <div
-        className={`pl-8 py-8 flex-grow md:flex-grow-0 md:flex flex-col md:w-[450px] justify-between bg-pink ${
+        className={`pl-8 py-8 flex-grow md:flex-grow-0 md:flex flex-col w-60 justify-between bg-pink ${
           showMenu ? "flex" : "hidden"
         }`}
       >

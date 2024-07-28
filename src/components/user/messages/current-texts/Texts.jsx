@@ -42,10 +42,19 @@ export default function Texts({
     getMessages();
   }, [friend_id, setTexts]);
 
-  // Realtime chat.
-  socket.on("chat message", (text) => {
-    setTexts([...texts, text]);
-  });
+  useEffect(() => {
+    function chat_message(user_id, text) {
+      if (user_id === friend_id) {
+        setTexts([...texts, text]);
+      }
+    }
+
+    // Realtime chat.
+    socket.on("chat message", chat_message);
+
+    // On unmount.
+    return () => socket.off("chat message", chat_message);
+  }, [friend_id, texts, setTexts]);
 
   const messagesEndRef = useRef(null);
 
@@ -64,18 +73,22 @@ export default function Texts({
   }
 
   return (
-    <ul
+    <div
       ref={messagesEndRef}
-      className="flex flex-col gap-2 flex-grow pt-4 px-8 max-h-[75vh] md:max-h-[550px] overflow-y-scroll"
+      className="overflow-y-scroll flex-grow flex flex-col justify-end max-w-[875px]"
     >
-      {texts.map((e) => {
-        return <Text key={e._id} user={e.from === user._id} message={e.text} />;
-      })}
-      {isTexting && (
-        <span className="px-4 py-2 animate-pulse rounded-lg bg-dark-pink text-sm md:text-base self-start text-font-gray">
-          . . .
-        </span>
-      )}
-    </ul>
+      <ul className="flex flex-col gap-2 pt-4 px-8 max-h-[75vh] md:max-h-[550px]">
+        {texts.map((e) => {
+          return (
+            <Text key={e._id} user={e.from === user._id} message={e.text} />
+          );
+        })}
+        {isTexting && (
+          <span className="px-4 py-2 animate-pulse rounded-lg bg-dark-pink text-sm md:text-base self-start text-font-gray">
+            . . .
+          </span>
+        )}
+      </ul>
+    </div>
   );
 }
