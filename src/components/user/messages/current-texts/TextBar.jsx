@@ -55,7 +55,6 @@ export default function TextBar({
     }
 
     setTexts([...texts, message]);
-
     e.target.message.value = "";
   }
 
@@ -85,7 +84,7 @@ export default function TextBar({
 
         typingTimeoutRef.current = setTimeout(() => {
           setIsTexting(false);
-        }, 2000);
+        }, 1000);
       }
     }
 

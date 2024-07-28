@@ -24,8 +24,6 @@ export function createSocket(userId) {
       },
     });
 
-    socket.emit("login");
-
     // Socket events.
     socket.on("connect", () => {
       console.log(`Socket connected: ${socket.id}`);
@@ -33,6 +31,9 @@ export function createSocket(userId) {
 
     socket.on("disconnect", async () => {
       socket = null;
+
+      // Clean off any listeners.
+      socket.off();
 
       if (guest) {
         await fetch("http://127.0.0.1:3000/user", {
@@ -49,7 +50,6 @@ export function createSocket(userId) {
 export function disconnectSocket() {
   if (socket) {
     socket.disconnect();
-    socket = null;
   }
 }
 
