@@ -64,7 +64,13 @@ async function bot_message(text, userId) {
   }
 }
 
-async function send_prompt_message(userId, setIsTexting, texts, setTexts) {
+async function send_prompt_message(
+  userId,
+  setIsTexting,
+  texts,
+  setTexts,
+  setDisabled
+) {
   setIsTexting(true);
 
   const text =
@@ -74,6 +80,7 @@ async function send_prompt_message(userId, setIsTexting, texts, setTexts) {
   setTimeout(() => {
     setTexts([...texts, message]);
     setIsTexting(false);
+    setDisabled(false);
   }, 2000);
 }
 
@@ -83,7 +90,8 @@ export async function bot_response(
   texts,
   setTexts,
   setIsTexting,
-  setDisabled
+  setDisabled,
+  textFocus
 ) {
   setIsTexting(true);
   setDisabled(true);
@@ -100,11 +108,14 @@ export async function bot_response(
         userId,
         setIsTexting,
         [...texts, bot_text],
-        setTexts
+        setTexts,
+        setDisabled,
+        textFocus
       );
+    } else {
+      setDisabled(false);
+      textFocus.current.focus();
     }
-
-    setDisabled(false);
   }, 1000);
 }
 

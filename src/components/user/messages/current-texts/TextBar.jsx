@@ -16,6 +16,15 @@ export default function TextBar({
   const [disabled, setDisabled] = useState(false);
   const { user } = useUser();
 
+  // Automatically focuses the text.
+  const textFocus = useRef(null);
+
+  useEffect(() => {
+    if (!disabled && textFocus.current) {
+      textFocus.current.focus();
+    }
+  }, [disabled]);
+
   async function send_message(e) {
     e.preventDefault();
 
@@ -111,6 +120,7 @@ export default function TextBar({
         onChange={() => socket.emit("typing", { user_id: user._id, friend_id })}
         disabled={disabled}
         autoFocus
+        ref={textFocus}
       />
       <button>
         <FontAwesomeIcon
