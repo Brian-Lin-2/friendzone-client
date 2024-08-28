@@ -9,7 +9,7 @@ function useUser() {
 
 export async function getUser() {
   try {
-    const res = await fetch("http://localhost:3000/user", {
+    const res = await fetch("http://142.93.205.229/user", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,7 +28,7 @@ export async function getUser() {
 
 export async function getRequests() {
   try {
-    const res = await fetch("http://localhost:3000/user/friend-request", {
+    const res = await fetch("http://142.93.205.229/user/friend-request", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

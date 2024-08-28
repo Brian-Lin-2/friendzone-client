@@ -22,7 +22,7 @@ export default function ProfileInfo() {
       last_name: e.target.last_name.value,
     });
 
-    const res = await fetch(`http://127.0.0.1:3000/user`, {
+    const res = await fetch(`http://142.93.205.229/user`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -46,7 +46,7 @@ function get_response(text) {
 
 async function bot_message(text, userId) {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/message/bot/${userId}`, {
+    const res = await fetch(`http://142.93.205.229/message/bot/${userId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

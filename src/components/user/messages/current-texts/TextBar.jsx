@@ -35,7 +35,7 @@ export default function TextBar({
       text = convert_text(text);
     }
 
-    const res = await fetch(`http://127.0.0.1:3000/message/${friend_id}`, {
+    const res = await fetch(`http://142.93.205.229/message/${friend_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -8,7 +8,7 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
   async function acceptRequest() {
     const res = await fetch(
-      `http://127.0.0.1:3000/user/friend-request/${friend._id}`,
+      `http://142.93.205.229/user/friend-request/${friend._id}`,
       {
         method: "PUT",
         headers: {
@@ -27,7 +27,7 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
   async function rejectRequest() {
     const res = await fetch(
-      `http://127.0.0.1:3000/user/friend-request/${friend._id}`,
+      `http://142.93.205.229/user/friend-request/${friend._id}`,
       {
         method: "DELETE",
         headers: {

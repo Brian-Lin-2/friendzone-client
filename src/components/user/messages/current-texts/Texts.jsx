@@ -25,7 +25,7 @@ export default function Texts({
 
     async function getMessages() {
       const res = await fetch(
-        `http://127.0.0.1:3000/message/all/${friend_id}`,
+        `http://142.93.205.229/message/all/${friend_id}`,
         {
           method: "GET",
           headers: {

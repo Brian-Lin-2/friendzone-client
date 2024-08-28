@@ -13,7 +13,7 @@ export default function AddFriend() {
       name: e.target.username.value,
     });
 
-    const res = await fetch("http://localhost:3000/user/friend-request", {
+    const res = await fetch("http://142.93.205.229/user/friend-request", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

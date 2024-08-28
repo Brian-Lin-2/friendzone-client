@@ -18,7 +18,7 @@ let socket = null;
 
 export function createSocket(userId) {
   if (!socket) {
-    socket = io("http://127.0.0.1:3000", {
+    socket = io("http://142.93.205.229", {
       query: {
         userId,
       },
@@ -36,7 +36,7 @@ export function createSocket(userId) {
       socket.off();
 
       if (guest) {
-        await fetch("http://127.0.0.1:3000/user", {
+        await fetch("http://142.93.205.229/user", {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
