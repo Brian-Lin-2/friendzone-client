@@ -60,7 +60,7 @@ async function login(user) {
     localStorage.setItem("token", data.token);
 
     // Automatically redirect.
-    window.location.href = "http://localhost:5173/user";
+    window.location.href = "https://friendzone-client.vercel.app/user";
 
     // Indicates no error.
     return null;
@@ -117,5 +117,5 @@ export async function attemptLogin(e, setErrors) {
 export async function logout() {
   disconnectSocket();
   localStorage.clear();
-  window.location.href = "http://localhost:5173";
+  window.location.href = "https://friendzone-client.vercel.app";
 }

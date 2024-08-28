@@ -22,7 +22,7 @@ export async function getUser() {
   } catch (err) {
     // This should never be reached.
     localStorage.clear();
-    window.location.href = "http://localhost:5173";
+    window.location.href = "https://friendzone-client.vercel.app";
   }
 }
 

@@ -3,14 +3,14 @@ import { io } from "socket.io-client";
 export function isLoggedIn() {
   if (token) {
     // We want to always redirect to the user page.
-    window.location.href = "http://localhost:5173/user";
+    window.location.href = "https://friendzone-client.vercel.app/user";
   }
 }
 
 export function authenticate() {
   // Checks to see if there's a user.
   if (!token) {
-    window.location.href = "http://localhost:5173/login";
+    window.location.href = "https://friendzone-client.vercel.app/login";
   }
 }
 
