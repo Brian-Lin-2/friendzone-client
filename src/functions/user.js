@@ -9,7 +9,7 @@ function useUser() {
 
 export async function getUser() {
   try {
-    const res = await fetch("http://142.93.205.229/user", {
+    const res = await fetch("http://www.friendzone-server.online/user", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,12 +28,15 @@ export async function getUser() {
 
 export async function getRequests() {
   try {
-    const res = await fetch("http://142.93.205.229/user/friend-request", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "http://www.friendzone-server.online/user/friend-request",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     const data = await res.json();
 

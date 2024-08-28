@@ -18,7 +18,7 @@ export async function handleGuest() {
 }
 
 async function createUser(user) {
-  const res = await fetch("http://142.93.205.229/user/signup", {
+  const res = await fetch("http://www.friendzone-server.online/user/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export function populateErrors(errors, err) {
 }
 
 async function login(user) {
-  const res = await fetch("http://142.93.205.229/user/login", {
+  const res = await fetch("http://www.friendzone-server.online/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

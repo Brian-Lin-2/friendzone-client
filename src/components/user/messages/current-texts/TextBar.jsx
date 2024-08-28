@@ -35,16 +35,19 @@ export default function TextBar({
       text = convert_text(text);
     }
 
-    const res = await fetch(`http://142.93.205.229/message/${friend_id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        text,
-      }),
-    });
+    const res = await fetch(
+      `http://www.friendzone-server.online/message/${friend_id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          text,
+        }),
+      }
+    );
 
     const data = await res.json();
     const message = data.sent_message;

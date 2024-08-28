@@ -25,7 +25,7 @@ export default function Texts({
 
     async function getMessages() {
       const res = await fetch(
-        `http://142.93.205.229/message/all/${friend_id}`,
+        `http://www.friendzone-server.online/message/all/${friend_id}`,
         {
           method: "GET",
           headers: {
