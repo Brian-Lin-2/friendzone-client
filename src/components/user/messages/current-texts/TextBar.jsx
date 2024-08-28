@@ -36,7 +36,7 @@ export default function TextBar({
     }
 
     const res = await fetch(
-      `http://www.friendzone-server.online/message/${friend_id}`,
+      `https://www.friendzone-server.online/message/${friend_id}`,
       {
         method: "POST",
         headers: {

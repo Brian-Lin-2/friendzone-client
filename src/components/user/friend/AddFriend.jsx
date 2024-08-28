@@ -14,7 +14,7 @@ export default function AddFriend() {
     });
 
     const res = await fetch(
-      "http://www.friendzone-server.online/user/friend-request",
+      "https://www.friendzone-server.online/user/friend-request",
       {
         method: "POST",
         headers: {

@@ -8,7 +8,7 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
   async function acceptRequest() {
     const res = await fetch(
-      `http://www.friendzone-server.online/user/friend-request/${friend._id}`,
+      `https://www.friendzone-server.online/user/friend-request/${friend._id}`,
       {
         method: "PUT",
         headers: {
@@ -27,7 +27,7 @@ export default function FriendRequest({ friend, requests, setRequests }) {
 
   async function rejectRequest() {
     const res = await fetch(
-      `http://www.friendzone-server.online/user/friend-request/${friend._id}`,
+      `https://www.friendzone-server.online/user/friend-request/${friend._id}`,
       {
         method: "DELETE",
         headers: {

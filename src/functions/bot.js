@@ -47,7 +47,7 @@ function get_response(text) {
 async function bot_message(text, userId) {
   try {
     const res = await fetch(
-      `http://www.friendzone-server.online/message/bot/${userId}`,
+      `https://www.friendzone-server.online/message/bot/${userId}`,
       {
         method: "POST",
         headers: {

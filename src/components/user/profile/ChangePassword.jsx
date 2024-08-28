@@ -16,7 +16,7 @@ export default function ChangePassword({ setChangePassword }) {
     });
 
     const res = await fetch(
-      `http://www.friendzone-server.online/user/change-password`,
+      `https://www.friendzone-server.online/user/change-password`,
       {
         method: "PUT",
         headers: {
