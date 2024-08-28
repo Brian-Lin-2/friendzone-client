@@ -46,15 +46,18 @@ function get_response(text) {
 
 async function bot_message(text, userId) {
   try {
-    const res = await fetch(`http://142.93.205.229/message/bot/${userId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text,
-      }),
-    });
+    const res = await fetch(
+      `http://www.friendzone-server.online/message/bot/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text,
+        }),
+      }
+    );
 
     const data = await res.json();
 

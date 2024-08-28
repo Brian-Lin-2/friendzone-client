@@ -13,14 +13,17 @@ export default function AddFriend() {
       name: e.target.username.value,
     });
 
-    const res = await fetch("http://142.93.205.229/user/friend-request", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: friend,
-    });
+    const res = await fetch(
+      "http://www.friendzone-server.online/user/friend-request",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: friend,
+      }
+    );
 
     const body = await res.json();
 

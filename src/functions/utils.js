@@ -18,7 +18,7 @@ let socket = null;
 
 export function createSocket(userId) {
   if (!socket) {
-    socket = io("http://142.93.205.229", {
+    socket = io("http://www.friendzone-server.online", {
       query: {
         userId,
       },
@@ -36,7 +36,7 @@ export function createSocket(userId) {
       socket.off();
 
       if (guest) {
-        await fetch("http://142.93.205.229/user", {
+        await fetch("http://www.friendzone-server.online/user", {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

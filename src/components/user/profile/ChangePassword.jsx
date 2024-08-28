@@ -15,14 +15,17 @@ export default function ChangePassword({ setChangePassword }) {
       confirm_password: e.target.confirm_password.value,
     });
 
-    const res = await fetch(`http://142.93.205.229/user/change-password`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: password_change,
-    });
+    const res = await fetch(
+      `http://www.friendzone-server.online/user/change-password`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: password_change,
+      }
+    );
 
     const data = await res.json();
 
