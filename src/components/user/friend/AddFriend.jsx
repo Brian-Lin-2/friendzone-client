@@ -10,7 +10,7 @@ export default function AddFriend() {
     e.preventDefault();
 
     const friend = JSON.stringify({
-      name: e.target.username.value,
+      name: e.target.username.value.toLowerCase(),
     });
 
     const res = await fetch(

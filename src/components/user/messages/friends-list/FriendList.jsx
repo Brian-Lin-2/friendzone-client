@@ -1,7 +1,7 @@
 import SearchBar from "./SearchBar";
 import Friend from "./Friend";
-import { useState } from "react";
-import useUser from "../../../../functions/user";
+import { useState, useEffect } from "react";
+import { getUser } from "../../../../functions/user";
 
 export default function FriendList({
   selectedFriend,
@@ -9,10 +9,21 @@ export default function FriendList({
   mobileMessages,
   setMobileMessages,
 }) {
-  const { user } = useUser();
-
   // Selected friend will default be first friend.
-  const [friends, setFriends] = useState(user.friends);
+  const [friends, setFriends] = useState(null);
+
+  useEffect(() => {
+    async function getFriends() {
+      const user = await getUser();
+      setFriends(user.friends);
+    }
+
+    getFriends();
+  }, []);
+
+  if (!friends) {
+    return;
+  }
 
   return (
     <div
