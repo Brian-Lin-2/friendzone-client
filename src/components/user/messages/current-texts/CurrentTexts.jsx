@@ -39,6 +39,7 @@ export default function CurrentTexts({
           mobileMessages={mobileMessages}
         />
         <TextBar
+          key={selectedFriend._id}
           friend_id={selectedFriend._id}
           texts={texts}
           setTexts={setTexts}
