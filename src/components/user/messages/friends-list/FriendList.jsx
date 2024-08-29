@@ -41,7 +41,7 @@ export default function FriendList({
             <Friend
               key={friend._id}
               friend={friend}
-              selected={selectedFriend === friend}
+              selected={selectedFriend.username === friend.username}
               setSelectedFriend={setSelectedFriend}
               setMobileMessages={setMobileMessages}
             />
