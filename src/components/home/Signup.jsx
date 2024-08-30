@@ -10,7 +10,7 @@ export default function Signup() {
   const [errors, setErrors] = useState(null);
 
   return (
-    <div className="bg-light-pink min-h-lvh flex items-center justify-center">
+    <div className="bg-light-pink min-h-svh flex items-center justify-center">
       <div className="bg-transparent-white px-8 md:px-12 pt-6 md:pt-8 pb-16 md:pb-20 rounded-xl md:w-[28em] mx-8 md:mx-0">
         <Link to="/">
           <img className="w-8 md:w-12" src="/images/back-arrow.png" />

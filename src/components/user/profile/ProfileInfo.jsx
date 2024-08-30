@@ -88,7 +88,7 @@ export default function ProfileInfo() {
               id="last_name"
               name="last_name"
               value={`${profile.last_name}`}
-              onChange={(e) => changeProfile(e, "username")}
+              onChange={(e) => changeProfile(e, "last_name")}
             />
 
             <button className="border-2 rounded-lg text-sm md:text-base bg-black text-white p-2">

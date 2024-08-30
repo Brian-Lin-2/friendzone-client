@@ -23,7 +23,7 @@ export default function UserContextProvider({ children }) {
 
   if (!user) {
     return (
-      <div className="flex min-h-screen bg-light-pink">
+      <div className="flex min-h-svh bg-light-pink">
         <Loading />
       </div>
     );

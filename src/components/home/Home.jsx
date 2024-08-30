@@ -7,7 +7,7 @@ export default function Home() {
   isLoggedIn();
 
   return (
-    <div className="flex flex-col gap-4 md:flex-row justify-center md:justify-evenly items-center min-h-lvh bg-light-pink">
+    <div className="flex flex-col gap-4 md:flex-row justify-center md:justify-evenly items-center min-h-svh bg-light-pink">
       <div>
         <h1 className="text-5xl text-center md:text-left md:text-8xl font-bold">
           friendzone.

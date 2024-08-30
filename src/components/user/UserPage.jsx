@@ -12,7 +12,7 @@ export default function UserPage() {
 
   return (
     <UserContextProvider>
-      <div className="flex min-h-lvh">
+      <div className="flex min-h-svh">
         <Sidebar showMenu={showMenu} setShowMenu={setShowMenu} />
 
         <div className={`${showMenu ? "hidden" : "flex"} md:flex flex-grow`}>
