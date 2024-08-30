@@ -81,7 +81,7 @@ export async function attemptSignup(e, setErrors) {
   e.preventDefault();
 
   const user = {
-    username: e.target.username.value,
+    username: e.target.username.value.toLowerCase(),
     password: e.target.password.value,
     confirm_password: e.target.confirm_password.value,
     first_name: e.target.first_name.value,
@@ -101,7 +101,7 @@ export async function attemptLogin(e, setErrors) {
   e.preventDefault();
 
   const user = {
-    username: e.target.username.value,
+    username: e.target.username.value.toLowerCase(),
     password: e.target.password.value,
   };
 
